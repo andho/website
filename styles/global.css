@@ -8,6 +8,10 @@ header {
 	background-color: white;
 	padding: 10px;
 }
+nav#main-nav {
+	background-color: white;	
+	padding: 10px;	
+}
 section#main {
 	background-color: white;
 	padding: 10px;
