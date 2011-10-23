@@ -52,11 +52,12 @@ window.navView = Backbone.View.extend({
 
 window.homeView = Backbone.View.extend({
 	el: $('#main'),
+    template: ich.homepage,
 	events: {
 		"click #projects": "showProjects"
 	},
 	render: function() {
-		$(this.el).html($('#homepage').html());
+		$(this.el).html(this.template({}, true));
 	},
     showProjects: function() {
     	router.navigate('projects', true);
@@ -65,8 +66,9 @@ window.homeView = Backbone.View.extend({
 
 window.projectView = Backbone.View.extend({
 	el: $('#main'),
+    template: ich.projectspage,
 	render: function() {
-		$(this.el).html($('#projectspage').html());
+		$(this.el).html(this.template({}, true));
 	}
 });
 

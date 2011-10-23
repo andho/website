@@ -8,7 +8,7 @@
 
   <!-- start Google analytics -->
   <script type="text/javascript">
-
+/*
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-24858004-1']);
   _gaq.push(['_setDomainName', '.andho.com']);
@@ -19,7 +19,7 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+*/
   </script>
   <!-- end Google analytics -->
 
@@ -28,6 +28,8 @@
   <script src="js/jquery-1.6.4.min.js"></script>
   <script src="js/underscore-min.js"></script>
   <script src="js/backbone-min.js"></script>
+  <script src="js/ICanHaz.min.js"></script>
+  
   <script src="js/app.js"></script>
   <script type="text/javascript">
   $(function() {
@@ -37,7 +39,7 @@
     var nav = new navView;
     $('header').after(nav.render().el);
 	
-	router.navigate('');
+	//router.navigate('');
   });
   </script>
 </head>
@@ -55,12 +57,12 @@
   <section id="imagination">
     <img src="images/spongebob_imagination.gif" alt="spongebob imagination" />
     <p id="best-viewed-with">Best viewed with imagination</p>
-    <p>Powered by backbone.js</p>
+    <p>Standing upright with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a></p>
   </section>
   <p>&copy; Andho 2011. All Rights reserved<p>
 </footer>
 
-<script type="text/template" id="homepage">
+<script type="text/html" id="homepage">
 	<section id="about-website">
 	</section>
 	<section itemscope itemtype="http://data-vocabulary.org/Person">
@@ -95,7 +97,7 @@
 		<p>See <a id="projects">my projects</a> at the projects page</p>
 	</section>
 </script>
-<script type="text/template" id="projectspage">
+<script type="text/html" id="projectspage">
 	<section>
 		<h1>Projects</h1>
 		<dl>
@@ -113,14 +115,16 @@
 
 <!-- Piwik -->
 <script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.andho.com/" : "http://piwik.andho.com/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    
+//var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.andho.com/" : "http://piwik.andho.com/");
+//document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
 </script><script type="text/javascript">
-try {
+/*try {
 var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
 piwikTracker.trackPageView();
 piwikTracker.enableLinkTracking();
 } catch( err ) {}
+*/
 </script><noscript><p><img src="http://piwik.andho.com/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
 <!-- End Piwik Tracking Code -->
 
