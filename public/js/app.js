@@ -50,25 +50,28 @@ window.navView = Backbone.View.extend({
     }
 });
 
-window.homeView = Backbone.View.extend({
+window.homeView = Andho.View.extend({
 	el: $('#main'),
-    template: ich.homepage,
+    template: 'home',
 	events: {
 		"click #projects": "showProjects"
 	},
 	render: function() {
-		$(this.el).html(this.template({}, true));
+        $(this.el).html(this.getTemplate());
 	},
     showProjects: function() {
     	router.navigate('projects', true);
     }
 });
 
-window.projectView = Backbone.View.extend({
+window.projectView = Andho.View.extend({
 	el: $('#main'),
-    template: ich.projectspage,
+    template: 'projects',
+    initialize: function() {
+        this.data = {projects: [{name:"SimDAL", description:"Hello World!?"}]};
+    },
 	render: function() {
-		$(this.el).html(this.template({}, true));
+        $(this.el).html(this.getTemplate());
 	}
 });
 
