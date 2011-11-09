@@ -72,10 +72,6 @@ window.navView = Andho.View.extend({
 		link: ''
 	    },
 	    {
-		label: 'Projects',
-		link: 'projects'
-	    },
-	    {
 		label: 'Blog',
 		link: 'http://blog.andho.com',
 		class: 'outer'
