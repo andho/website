@@ -1,30 +1,129 @@
 @CHARSET "UTF-8";
+br.clear {
+    clear: left;
+}
 body {
-	background-color: black;
+	background-color: white;
 	margin: 0;
 	padding: 0;
+	font-family: Arial;
+	font-size: 1em;
 }
 header {
 	background-color: white;
 	padding: 10px;
 }
 nav#main-nav {
-	background-color: white;	
+	background-color: #c83737;
 	padding: 10px;	
+	color: #fff;
+}
+nav#main-nav a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-right: 10px;
+}
+section#container {
+    width: 900px;
+    margin: 0 auto;
+    background-color: #666;
+}
+section#side {
+    color: #666;
+    width: 350px;
+    float: right;
+}
+section#side article#japanese p {
+    color: #b3b3b3;
+    margin: 0;
+    font-size: 0.9em;
+    text-align: center;
+}
+section#side article#twitter-feed {
+    margin: 10px;
+    padding: 10px;
+    font-size: 0.95em;
+}
+section#side article#twitter-feed h2 {
+    margin: 0;
+}
+section#side article#twitter-feed section {
+    background-color: #b3b3b3;
+    padding: 10px;
 }
 section#main {
-	background-color: white;
-	padding: 10px;
+	background: #f9f9f9 url(../images/title.png) 480px 115px no-repeat;
+	padding: 10px 20px;
+	margin-right: 350px;
+	min-height: 500px;
+}
+section#main h1 {
+    background: url(../images/heading.png);
+    margin: 10px -20px 0 -20px;
+    height: 53px;
+    padding-top: 9px;
+    padding-left: 25px;
+
+    font-family: Serif;
+    font-size: 2.9em;
+    font-weight: normal;
+    font-variant: small-caps;
+}
+section#main h2 {
+    font-family: "Bitstream Vera Sans";
+    font-weight: normal;
+    font-size: 1.9em;
+    border-bottom: 1px solid #000;
+}
+section#main dl.list dt {
+    clear: left;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 10px;
+    width: 70px;
+    text-align: left;
+
+    font-weight: bold;
+}
+section#main dl.list dd {
+    height: 20px;
+    line-height: 20px;
+    padding-left: 10px;
+    margin-left: 80px;
+}
+section#main dl.list dt:after {
+    content: ":";
 }
 footer {
-	background-color: black;
-	color: gray;
+	background-color: #e0e0e0;
 	padding: 10px;
-	text-align: center;	
+	padding-top: 40px;
+	margin-right: 350px;
+	text-align: right;
+
+	font-size: 0.8em;
+	color: #666;	
 }
-footer #best-viewed-with {
-	color: white;
+footer p {
+    margin: 0;
+}
+footer section#powered-by p {
+    float: left;
+    width: 125px;
+    margin-right: 10px;
+    text-align: center;
+    color: #333;
+}
+footer p#copyright {
+    clear: left;
+    text-align: right;
 }
 a {
-	color: #059;
+    color: #059;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }

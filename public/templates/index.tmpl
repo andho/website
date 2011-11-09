@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="http://local.andho.com/" />
+  <title>Andho's homepage</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="google-site-verification" content="CwpcbTpHOapMSYGlb8D_0JQm-ygG3TUIuKiT2UtPQKc" />
+  <meta name="author" content="Amjad Mohamed, andho.com" />
+
+  <!-- start Google analytics -->
+  <script type="text/javascript">
+/*
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24858004-1']);
+  _gaq.push(['_setDomainName', '.andho.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+  </script>
+  <!-- end Google analytics -->
+
+  <link href="favicon.png" type="image/x-png" rel="shortcut icon" />	
+  <link href="styles/global.css" type="text/css" media="screen" rel="stylesheet" />
+  <script src="js/jquery-1.6.4.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/backbone.js"></script>
+  <script src="js/ICanHaz.min.js"></script>
+  <script src="js/template-manager.js"></script>
+  <script src="js/andho-view.js"></script>
+  
+  <script src="js/bootstrap.js"></script>
+  <script src="js/models/projects.js"></script>
+  <script src="js/app.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    $('a:not(.outer)').live('click', function(e) { e.preventDefault(); });
+
+	window.router = new workspace({appView: new window.AppView});
+	Backbone.history.start({pushState: true});
+
+    var nav = new navView;
+    $('section#container').prepend(nav.render().el);
+	
+	//router.navigate('');
+  });
+  </script>
+</head>
+
+<body>
+<section id="container">
+  <header style="display:none">
+	<span id="logo"></h1><img src="images/logo.png" alt="Andho.com logo" /></span>
+  </header>
+
+  <section id="side">
+    <article id="japanese">
+      <img src="images/andho-jp.png" alt="andho" />
+      <p>I am not Japanese, but my nickname kind of is</p>
+    </article>
+    <article id="twitter-feed">
+      <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+      <script>
+	new TWTR.Widget({
+	version: 2,
+	type: 'profile',
+	rpp: 4,
+	interval: 30000,
+	width: 310,
+	height: 300,
+	theme: {
+	shell: {
+	background: '#4D4D4D',
+	color: '#999999'
+	},
+	tweets: {
+	background: '#4D4D4D',
+	color: '#ffffff',
+	links: '#a3c5ff'
+	}
+	},
+	features: {
+	scrollbar: false,
+	loop: false,
+	live: false,
+	behavior: 'all'
+	}
+	}).render().setUser('andhos').start();
+      </script>
+    </article>
+  </section>
+  <section id="main">
+  </section>
+
+  <footer>
+    <section id="powered-by">
+      <p id="best-viewed-with">
+	<a href="https://affiliates.mozilla.org/link/banner/3323/3/190"><img src="http://affiliates-cdn.mozilla.org/media/uploads/banners/download-small-blue-EN.png" alt="" /></a><br>
+	Better view with Firefox!
+      </p>
+      <p>
+	<a href="http://documentcloud.github.com/backbone/">
+	  <img src="images/backbone.png" alt="Backbone.js" />
+	</a><br>
+	Standing upright with Backbone.js
+      </p>
+    </section>
+    <p id="copyright">Creation of Andho, 2011</p>
+    <p style="clear:both"></p>
+  </footer>
+</section>
+<!-- Piwik -->
+<script type="text/javascript">
+    
+//var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.andho.com/" : "http://piwik.andho.com/");
+//document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+/*try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+*/
+</script><noscript><p><img src="http://piwik.andho.com/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+
+</body>
+</html>
