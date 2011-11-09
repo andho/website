@@ -7,7 +7,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: Arial;
-	font-size: 1em;
+	font-size: 0.82em;
 }
 header {
 	background-color: white;
@@ -79,8 +79,7 @@ section#main h2 {
 section#main dl.list dt {
     clear: left;
     float: left;
-    height: 20px;
-    line-height: 20px;
+    min-height: 20px;
     padding-left: 10px;
     width: 70px;
     text-align: left;
@@ -88,8 +87,7 @@ section#main dl.list dt {
     font-weight: bold;
 }
 section#main dl.list dd {
-    height: 20px;
-    line-height: 20px;
+    min-height: 20px;
     padding-left: 10px;
     margin-left: 80px;
 }
