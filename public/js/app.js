@@ -2,34 +2,46 @@ $(function() {
 
 window.AppView = function() {
     this.showView = function(view) {
-	if (this.currentView) {
-	    this.currentView.close();
-	}
-
-	this.currentView = view;
-	this.currentView.render();
-
-	$('#main').html(this.currentView.el);
+	    var render = true;
+	    if (typeof this.currentView == 'undefined') {
+	    	render = false;
+	    }
+		if (this.currentView) {
+		    this.currentView.close();
+		}
+	
+		this.currentView = view;
+		
+		if (render) {
+			this.currentView.render();
+	    }
+	
+		//$('#main').html(this.currentView.el);
     };
-}
-
-    Backbone.View.prototype.close = function() {
-	this.remove();
-	this.unbind();
-	if (this.onClose) {
-	    this.onClose();
-	}
-    }
+};
 
 window.workspace = Backbone.Router.extend({
 	routes: {
 		"": "home",
         'project/:id': 'project_details',
-		"projects": "projects"
+		"projects": "projects",
+		
+		"*path": 'notFound'
 	},
 
     initialize: function(options) {
-	this.appView = options.appView;
+    	this.appView = options.appView;
+    	var self = this;
+        $('a:not(.outer)').live('click', function(e) {
+        	e.preventDefault();
+        	self.navigate($(this).attr('href'), true);
+        });
+    	Backbone.history.start({pushState: true});
+    },
+    
+    notFound: function() {
+    	notfound = new notFoundView;
+    	this.appView.showView(notfound);
     },
 	
     home: function() {
@@ -62,8 +74,16 @@ window.workspace = Backbone.Router.extend({
 	
     });
 
+window.notFoundView = Andho.View.extend({
+	tagName: 'section',
+	template: 'notfound',
+	render: function() {
+		$(this.el).html(this.getTemplate());
+	}
+});
+    
 window.navView = Andho.View.extend({
-	tagName:  "nav",
+	el:  "#main-nav",
 	
     model: new window.navModel({
 	menuitems: [
@@ -92,43 +112,29 @@ window.navView = Andho.View.extend({
 	return this;
     },
 	
-    events: {
-    	"click a:not(.outer)": "showPage"
-    },
-    
     initialize: function() {
     	$(this.el).attr('id', 'main-nav');
-    },
-    
-    showPage: function(e) {
-	router.navigate($(e.currentTarget).attr('href'), true);
     }
 });
 
 window.homeView = Andho.View.extend({
-    tagName: 'section',
+    el: '#main',
     template: 'home',
-    events: {
-		"click #projects": "showProjects"
-    },
     render: function() {
 	document.title = "Andho: Home";
 
 	$(this.el).html(this.getTemplate());
-    },
-    showProjects: function() {
-    	router.navigate('projects', true);
     }
 });
 
 window.projectView = Andho.View.extend({
-    tagName: 'section',
+    el: '#main',
     template: 'projects',
     initialize: function() {
         this.model.bind('reset', this.render, this);
     },
     render: function() {
-	document.title = 'Andho: Projects';
+    	document.title = 'Andho: Projects';
 
         $(this.el).html(this.getTemplate());
         
@@ -144,24 +150,18 @@ window.projectView = Andho.View.extend({
     }
 });
 
-window.projectItemView = Andho.View.extend({
+window.projectItemView = Andho.SubView.extend({
     tagName: 'span',
     template: 'project',
-    events: {
-        'click dt': 'onClick'
-    },
     render: function(data) {
         $(this.el).html(this.getTemplate(this.model.toJSON()));
         
         return this;
-    },
-    onClick: function() {
-        window.router.navigate('project/'+this.model.get('id'), true);
     }
 });
 
 window.ProjectDetailsView = Andho.View.extend({
-    tagName: 'section',
+    el: '#main',
     template: 'project-details',
     initialize: function() {
         this.model.fetch();

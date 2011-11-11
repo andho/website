@@ -19,5 +19,21 @@ Andho.View = Backbone.View.extend({
     },
     getLoadingTemplate: function() {
         return '...Loading...';
+    },
+    close: function() {
+    	this.unbind();
+    	if (this.onClose) {
+    	    this.onClose();
+    	}
+    }
+});
+
+Andho.SubView = Andho.View.extend({
+    close: function() {
+    	this.remove();
+    	this.unbind();
+    	if (this.onClose) {
+    	    this.onClose();
+    	}
     }
 });
