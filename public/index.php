@@ -51,7 +51,6 @@ $projects = array(
 
 $nav = array('menuitems'=>array(
     array('label'=>'Home', 'link' => ''),
-	array('label'=>'Projects', 'link'=>'projects'),
 	array('label'=>'Blog', 'link'=>'http://blog.andho.com', 'class'=>'outer')
 ));
 
