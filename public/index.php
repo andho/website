@@ -49,18 +49,20 @@ $projects = array(
     )
 );
 
+$nav = array('menuitems'=>array(
+    array('label'=>'Home', 'link' => ''),
+	array('label'=>'Projects', 'link'=>'projects'),
+	array('label'=>'Blog', 'link'=>'http://blog.andho.com', 'class'=>'outer')
+));
+
 $mustache = new MustacheTemplate('templates', '.tmpl');
 
 $app = new Slim();
 
 $app->setName('andho');
 
-$app->notFound(function() use($app, $mustache) {
-    $nav = $mustache->render('nav', array('menuitems'=>array(
-							     array('label'=>'Home', 'link' => ''),
-							     array('label'=>'Projects', 'link'=>'projects'),
-							     array('label'=>'Blog', 'link'=>'http://blog.andho.com', 'class'=>'outer')
-							     )));
+$app->notFound(function() use($app, $mustache, $nav) {
+    $nav = $mustache->render('nav', $nav);
 
     $app->response()->status(404);
     $content = $mustache->render('notfound');
@@ -71,12 +73,8 @@ $app->notFound(function() use($app, $mustache) {
     echo $view;
 });
 
-$app->get('/', function () use($app, $mustache) {
-    $nav = $mustache->render('nav', array('menuitems'=>array(
-							     array('label'=>'Home', 'link' => ''),
-							     array('label'=>'Projects', 'link'=>'projects'),
-							     array('label'=>'Blog', 'link'=>'http://blog.andho.com', 'class'=>'outer')
-							     )));
+$app->get('/', function () use($app, $mustache, $nav) {
+    $nav = $mustache->render('nav', $nav);
 
     $home = $mustache->render('home');
     $twitter = $mustache->render('twitter-feed');
@@ -86,12 +84,8 @@ $app->get('/', function () use($app, $mustache) {
     echo $view;
 });
 
-$app->get('/projects', function() use ($app, $mustache, $projects) {
-    $nav = $mustache->render('nav', array('menuitems'=>array(
-							     array('label'=>'Home', 'link' => ''),
-							     array('label'=>'Projects', 'link'=>'projects'),
-							     array('label'=>'Blog', 'link'=>'http://blog.andho.com', 'class'=>'outer')
-							     )));
+$app->get('/projects', function() use ($app, $mustache, $projects, $nav) {
+    $nav = $mustache->render('nav', $nav);
 
     $project_item = $mustache->getTemplate('project');
 
@@ -104,12 +98,8 @@ $app->get('/projects', function() use ($app, $mustache, $projects) {
     echo $view;
 });
 
-$app->get('/project/:id', function($id) use ($app, $mustache, $projects) {
-    $nav = $mustache->render('nav', array('menuitems'=>array(
-							     array('label'=>'Home', 'link' => ''),
-							     array('label'=>'Projects', 'link'=>'projects'),
-							     array('label'=>'Blog', 'link'=>'http://blog.andho.com', 'class'=>'outer')
-							     )));
+$app->get('/project/:id', function($id) use ($app, $mustache, $projects, $nav) {
+    $nav = $mustache->render('nav', $nav);
 
     if (!isset($projects[$id])) {
     	$app->notFound();
