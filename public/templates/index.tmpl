@@ -38,13 +38,10 @@
   <script src="js/app.js"></script>
   <script type="text/javascript">
   $(function() {
-    $('a:not(.outer)').live('click', function(e) { e.preventDefault(); });
-
 	window.router = new workspace({appView: new window.AppView});
-	Backbone.history.start({pushState: true});
 
     var nav = new navView;
-    $('section#container').prepend(nav.render().el);
+    //$('section#container').prepend(nav.render().el);
 	
 	//router.navigate('');
   });
@@ -53,6 +50,7 @@
 
 <body>
 <section id="container">
+  <nav id="main-nav">{{>nav}}</nav>
   <header style="display:none">
 	<span id="logo"></h1><img src="images/logo.png" alt="Andho.com logo" /></span>
   </header>
@@ -93,8 +91,7 @@
       </script>
     </article>
   </section>
-  <section id="main">
-  </section>
+  <section id="main">{{>content}}</section>
 
   <footer>
     <section id="powered-by">

@@ -1,0 +1,31 @@
+      <noscript>
+        <p style="background-color: #4D4D4D;padding:10px;color:#999">You need javascript to view this content</p>
+      </noscript>
+      <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+      <script>
+	new TWTR.Widget({
+	version: 2,
+	type: 'profile',
+	rpp: 4,
+	interval: 30000,
+	width: 310,
+	height: 300,
+	theme: {
+	shell: {
+	background: '#4D4D4D',
+	color: '#999999'
+	},
+	tweets: {
+	background: '#4D4D4D',
+	color: '#ffffff',
+	links: '#a3c5ff'
+	}
+	},
+	features: {
+	scrollbar: false,
+	loop: false,
+	live: false,
+	behavior: 'all'
+	}
+	}).render().setUser('andhos').start();
+      </script>
